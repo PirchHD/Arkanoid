@@ -1,3 +1,5 @@
 C:\Users\PirchHD\Desktop\Projekty\Arkanoid\Arkanoid\x64\Debug\Arkanoid.vcxprojAssemblyReference.cache
 C:\Users\PirchHD\Desktop\Projekty\Arkanoid\Arkanoid\x64\Debug\Arkanoid.Welcome.resources
 C:\Users\PirchHD\Desktop\Projekty\Arkanoid\Arkanoid\x64\Debug\Arkanoid.vcxproj.GenerateResource.cache
+C:\Users\PirchHD\Desktop\Projekty\Arkanoid\Arkanoid\x64\Debug\Arkanoid.Author.resources
+C:\Users\PirchHD\Desktop\Projekty\Arkanoid\Arkanoid\x64\Debug\Arkanoid.Game.resources

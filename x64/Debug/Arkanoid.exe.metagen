@@ -1,3 +1,5 @@
+  Arkanoid.Author.resources - Embedded, ContainedInManifestFile, 
+  Arkanoid.Game.resources - Embedded, ContainedInManifestFile, 
   Arkanoid.Welcome.resources - Embedded, ContainedInManifestFile, 
 ImageRuntimeVersion: v4.0.30319
 Assembly Arkanoid, Version=0.0.*, Culture=Język niezmienny (kraj niezmienny): 
