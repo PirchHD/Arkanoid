@@ -39,6 +39,9 @@ namespace Arkanoid {
 
 	private: System::Windows::Forms::Timer^ timer;
 	private: System::Windows::Forms::PictureBox^ platform;
+	private: System::Windows::Forms::Label^ lblPoint;
+	private: System::Windows::Forms::Label^ lbllives;
+
 	protected:
 
 	private: System::ComponentModel::IContainer^ components;
@@ -61,6 +64,8 @@ namespace Arkanoid {
 			this->ball = (gcnew System::Windows::Forms::PictureBox());
 			this->timer = (gcnew System::Windows::Forms::Timer(this->components));
 			this->platform = (gcnew System::Windows::Forms::PictureBox());
+			this->lblPoint = (gcnew System::Windows::Forms::Label());
+			this->lbllives = (gcnew System::Windows::Forms::Label());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->ball))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->platform))->BeginInit();
 			this->SuspendLayout();
@@ -94,12 +99,40 @@ namespace Arkanoid {
 			this->platform->TabStop = false;
 			this->platform->Click += gcnew System::EventHandler(this, &Game::platform_Click);
 			// 
+			// lblPoint
+			// 
+			this->lblPoint->AutoSize = true;
+			this->lblPoint->BackColor = System::Drawing::Color::Transparent;
+			this->lblPoint->Font = (gcnew System::Drawing::Font(L"Arial Rounded MT Bold", 14.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->lblPoint->ForeColor = System::Drawing::SystemColors::ControlLight;
+			this->lblPoint->Location = System::Drawing::Point(526, 24);
+			this->lblPoint->Name = L"lblPoint";
+			this->lblPoint->Size = System::Drawing::Size(43, 22);
+			this->lblPoint->TabIndex = 2;
+			this->lblPoint->Text = L"000";
+			// 
+			// lbllives
+			// 
+			this->lbllives->AutoSize = true;
+			this->lbllives->BackColor = System::Drawing::Color::Transparent;
+			this->lbllives->Font = (gcnew System::Drawing::Font(L"Arial Rounded MT Bold", 14.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->lbllives->ForeColor = System::Drawing::SystemColors::ButtonHighlight;
+			this->lbllives->Location = System::Drawing::Point(660, 23);
+			this->lbllives->Name = L"lbllives";
+			this->lbllives->Size = System::Drawing::Size(21, 22);
+			this->lbllives->TabIndex = 3;
+			this->lbllives->Text = L"3";
+			// 
 			// Game
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"$this.BackgroundImage")));
 			this->ClientSize = System::Drawing::Size(699, 501);
+			this->Controls->Add(this->lbllives);
+			this->Controls->Add(this->lblPoint);
 			this->Controls->Add(this->platform);
 			this->Controls->Add(this->ball);
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedSingle;
@@ -122,6 +155,12 @@ namespace Arkanoid {
 
 		char Direction; // direction platform
 
+		int lives = 3; // lives
+		int points = 0;
+
+		bool block = false;
+
+
 #pragma endregion
 	private: System::Void timer1_Tick(System::Object^ sender, System::EventArgs^ e) {
 		// move ball
@@ -140,18 +179,34 @@ namespace Arkanoid {
 		//platform
 		if ((Direction == 'R') && (platform->Left < Game::Width - platform->Width - 21) ) {
 			platform->Left += 20;
+			if(moveX==0 && moveY == 0)ball->Left += 20;
 		}
 		if ((Direction == 'L') && (platform->Left > 2)) {
 			platform->Left -= 20;
+			if (moveX == 0 && moveY == 0)ball->Left -= 20;
 		}
 
 		// bouncing platform
 		if ((ball->Left > platform->Left) && (ball->Left < platform->Left + platform->Width) && (ball->Top + ball->Height > platform->Top)) {
 			moveY = -moveY;
 		}
+		// if u lose yr ball(s) ;)
 		else if (ball->Top >= platform -> Top + 5) {
 			timer->Enabled = false;
+			ball->Enabled = false;
 			MessageBox::Show("U lose your balls ;)) ? ","Try if u can", MessageBoxButtons::OK);
+			ball->Top = platform->Top - ball->Height - 2;
+			ball -> Left = platform->Left + platform->Width/2;
+			moveX = 0; moveY = 0;
+			timer->Enabled = true;
+			ball->Enabled = true;
+			points -= 100;
+			lives -= 1;
+			lblPoint->Text = "" + points;
+			lbllives->Text = "" + lives;
+
+			block = false;
+			
 		}
 	}
 
@@ -162,9 +217,11 @@ namespace Arkanoid {
 
 		if (e->KeyCode == Keys::Right) Direction = 'R';
 
-		if (e->KeyCode == Keys::Space) {
+		if ((e->KeyCode == Keys::Space) && (block == false)) {
+
 			moveX = -5;
 			moveY = -5;
+			block = true;
 		}
 	}
 private: System::Void platform_Click(System::Object^ sender, System::EventArgs^ e) {
