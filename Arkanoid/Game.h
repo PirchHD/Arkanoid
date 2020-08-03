@@ -44,6 +44,12 @@ namespace Arkanoid {
 	private: System::Windows::Forms::PictureBox^ picend;
 	private: System::Windows::Forms::PictureBox^ picagain;
 	private: System::Windows::Forms::PictureBox^ piclose;
+	private: System::Windows::Forms::ImageList^ imageList1;
+	private: System::Windows::Forms::PictureBox^ pictureBox1;
+	private: System::Windows::Forms::PictureBox^ pictureBox2;
+	private: System::Windows::Forms::PictureBox^ pictureBox3;
+	private: System::Windows::Forms::PictureBox^ pictureBox4;
+	private: System::Windows::Forms::PictureBox^ pictureBox5;
 
 	protected:
 
@@ -72,11 +78,22 @@ namespace Arkanoid {
 			this->picend = (gcnew System::Windows::Forms::PictureBox());
 			this->picagain = (gcnew System::Windows::Forms::PictureBox());
 			this->piclose = (gcnew System::Windows::Forms::PictureBox());
+			this->imageList1 = (gcnew System::Windows::Forms::ImageList(this->components));
+			this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
+			this->pictureBox2 = (gcnew System::Windows::Forms::PictureBox());
+			this->pictureBox3 = (gcnew System::Windows::Forms::PictureBox());
+			this->pictureBox4 = (gcnew System::Windows::Forms::PictureBox());
+			this->pictureBox5 = (gcnew System::Windows::Forms::PictureBox());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->ball))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->platform))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->picend))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->picagain))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->piclose))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox2))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox3))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox4))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox5))->BeginInit();
 			this->SuspendLayout();
 			// 
 			// ball
@@ -139,7 +156,7 @@ namespace Arkanoid {
 			this->picend->BackColor = System::Drawing::Color::Transparent;
 			this->picend->Cursor = System::Windows::Forms::Cursors::Hand;
 			this->picend->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"picend.Image")));
-			this->picend->Location = System::Drawing::Point(91, 211);
+			this->picend->Location = System::Drawing::Point(246, 339);
 			this->picend->Name = L"picend";
 			this->picend->Size = System::Drawing::Size(199, 85);
 			this->picend->SizeMode = System::Windows::Forms::PictureBoxSizeMode::AutoSize;
@@ -153,7 +170,7 @@ namespace Arkanoid {
 			this->picagain->BackColor = System::Drawing::Color::Transparent;
 			this->picagain->Cursor = System::Windows::Forms::Cursors::Hand;
 			this->picagain->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"picagain.Image")));
-			this->picagain->Location = System::Drawing::Point(400, 210);
+			this->picagain->Location = System::Drawing::Point(41, 338);
 			this->picagain->Name = L"picagain";
 			this->picagain->Size = System::Drawing::Size(199, 86);
 			this->picagain->SizeMode = System::Windows::Forms::PictureBoxSizeMode::AutoSize;
@@ -175,12 +192,83 @@ namespace Arkanoid {
 			this->piclose->Visible = false;
 			this->piclose->Click += gcnew System::EventHandler(this, &Game::piclose_Click);
 			// 
+			// imageList1
+			// 
+			this->imageList1->ImageStream = (cli::safe_cast<System::Windows::Forms::ImageListStreamer^>(resources->GetObject(L"imageList1.ImageStream")));
+			this->imageList1->TransparentColor = System::Drawing::Color::Transparent;
+			this->imageList1->Images->SetKeyName(0, L"blok_czerwony.png");
+			this->imageList1->Images->SetKeyName(1, L"blok_metal.png");
+			this->imageList1->Images->SetKeyName(2, L"blok_metal_rozbity.png");
+			this->imageList1->Images->SetKeyName(3, L"blok_niebieski.png");
+			this->imageList1->Images->SetKeyName(4, L"blok_zielony.png");
+			this->imageList1->Images->SetKeyName(5, L"blok_zolty.png");
+			// 
+			// pictureBox1
+			// 
+			this->pictureBox1->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox1.Image")));
+			this->pictureBox1->Location = System::Drawing::Point(246, 206);
+			this->pictureBox1->Name = L"pictureBox1";
+			this->pictureBox1->Size = System::Drawing::Size(76, 36);
+			this->pictureBox1->SizeMode = System::Windows::Forms::PictureBoxSizeMode::AutoSize;
+			this->pictureBox1->TabIndex = 7;
+			this->pictureBox1->TabStop = false;
+			this->pictureBox1->Tag = L"C";
+			// 
+			// pictureBox2
+			// 
+			this->pictureBox2->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox2.Image")));
+			this->pictureBox2->Location = System::Drawing::Point(246, 124);
+			this->pictureBox2->Name = L"pictureBox2";
+			this->pictureBox2->Size = System::Drawing::Size(76, 36);
+			this->pictureBox2->SizeMode = System::Windows::Forms::PictureBoxSizeMode::AutoSize;
+			this->pictureBox2->TabIndex = 8;
+			this->pictureBox2->TabStop = false;
+			this->pictureBox2->Tag = L"C";
+			// 
+			// pictureBox3
+			// 
+			this->pictureBox3->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox3.Image")));
+			this->pictureBox3->Location = System::Drawing::Point(246, 248);
+			this->pictureBox3->Name = L"pictureBox3";
+			this->pictureBox3->Size = System::Drawing::Size(76, 36);
+			this->pictureBox3->SizeMode = System::Windows::Forms::PictureBoxSizeMode::AutoSize;
+			this->pictureBox3->TabIndex = 9;
+			this->pictureBox3->TabStop = false;
+			this->pictureBox3->Tag = L"C";
+			// 
+			// pictureBox4
+			// 
+			this->pictureBox4->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox4.Image")));
+			this->pictureBox4->Location = System::Drawing::Point(246, 82);
+			this->pictureBox4->Name = L"pictureBox4";
+			this->pictureBox4->Size = System::Drawing::Size(76, 36);
+			this->pictureBox4->SizeMode = System::Windows::Forms::PictureBoxSizeMode::AutoSize;
+			this->pictureBox4->TabIndex = 10;
+			this->pictureBox4->TabStop = false;
+			this->pictureBox4->Tag = L"D";
+			// 
+			// pictureBox5
+			// 
+			this->pictureBox5->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox5.Image")));
+			this->pictureBox5->Location = System::Drawing::Point(246, 166);
+			this->pictureBox5->Name = L"pictureBox5";
+			this->pictureBox5->Size = System::Drawing::Size(76, 36);
+			this->pictureBox5->SizeMode = System::Windows::Forms::PictureBoxSizeMode::AutoSize;
+			this->pictureBox5->TabIndex = 11;
+			this->pictureBox5->TabStop = false;
+			this->pictureBox5->Tag = L"C";
+			// 
 			// Game
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"$this.BackgroundImage")));
 			this->ClientSize = System::Drawing::Size(699, 501);
+			this->Controls->Add(this->pictureBox5);
+			this->Controls->Add(this->pictureBox4);
+			this->Controls->Add(this->pictureBox3);
+			this->Controls->Add(this->pictureBox2);
+			this->Controls->Add(this->pictureBox1);
 			this->Controls->Add(this->piclose);
 			this->Controls->Add(this->picagain);
 			this->Controls->Add(this->picend);
@@ -199,26 +287,77 @@ namespace Arkanoid {
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->picend))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->picagain))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->piclose))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox2))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox3))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox4))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox5))->EndInit();
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
 		}
 
-
+		
 		// move ball
 		int moveX = 0;
 		int moveY = 0;  // best 5
 
 		char Direction; // direction platform
 
-		int lives = 3; // lives
-		int points = 0;
+		int lives = 3; // yr lives in game
+		int points = 0; // yr point in game ;P
+
+		int bricks = 0; // how many destroy brick
 
 		bool block = false;
 
 
 #pragma endregion
+
+	private: void destroy_Brick(System::Windows::Forms::Control^ brick) {
+		if ((ball->Top + ball->Height > brick ->Top)&&
+			(ball->Top < brick->Top + brick -> Height)&&
+			(ball ->Left + ball ->Width > brick->Left)&&
+			(ball->Left < brick->Left + brick->Width)&&
+			(brick->Visible == true)){
+				
+				moveY = -moveY;
+				
+				if (brick->Tag != "D") {
+					brick->Visible = false;
+					points += 5;
+					
+					bricks += 1;
+				}
+				else {
+					PictureBox^ destroyed_Brick = (PictureBox^)brick;
+					destroyed_Brick -> Image = imageList1->Images[2];
+					brick->Tag = "CD";
+					points += 10;
+				}
+			    
+		}
+		lblPoint->Text = "" + points;
+
+		if (bricks == 5) {
+			timer->Enabled = false;
+			
+			picend->Visible = true;
+			picagain->Visible = true;
+			bricks = 0;
+			Game::BackgroundImage = Image::FromFile("../grafiki/tlo_koniec.png");
+		}
+	}
+
 	private: System::Void timer1_Tick(System::Object^ sender, System::EventArgs^ e) {
+		
+		for each (Control^ element in this->Controls) {
+			if (element->Tag == "C" || element->Tag == "D" || element->Tag == "CD") {
+				destroy_Brick(element);
+			}
+		}
+
+
 		// move ball
 		ball->Left += moveX;
 		ball->Top += moveY;
@@ -303,6 +442,7 @@ private: System::Void piclose_Click(System::Object^ sender, System::EventArgs^ e
 }
 
 private: System::Void picagain_Click(System::Object^ sender, System::EventArgs^ e) {
+	
 	lives = 3;
 	points = 0;
 
@@ -322,6 +462,18 @@ private: System::Void picagain_Click(System::Object^ sender, System::EventArgs^ 
 	moveX = 0; moveY = 0;
 
 	block = false;
+	Game::BackgroundImage = Image::FromFile("../grafiki/tlo_gra_01.png");
+
+	for each (Control ^ elements in this->Controls) {
+		if (elements->Tag == "C" || elements->Tag == "D" || elements->Tag == "CD") {
+			elements->Visible = true;
+			if (elements->Tag == "CD") {
+				elements->Tag = "D";
+				PictureBox^ image = (PictureBox^)elements;
+				image->Image = imageList1->Images[1];
+			}
+		}
+	}
 }
 };
 }
